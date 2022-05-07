@@ -34,7 +34,7 @@ module.exports = async function issueRelease ({ github, context, core }) {
     forceAuth: {
       token: process.env.NPM_TOKEN,
     },
-    access: pkg?.publishConfig?.access ?? 'restricted'
+    access: pkg.content?.publishConfig?.access ?? 'restricted'
   })
 
   core.info(`Commiting changes and creating new tag: v${newVersion}`)
