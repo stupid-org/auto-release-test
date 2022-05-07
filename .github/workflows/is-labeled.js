@@ -7,6 +7,8 @@ module.exports = async function isLabeled({ github, context, core }) {
     pull_number: context.issue.number,
   });
 
+  console.log(JSON.stringify(pr))
+
   const targetLabels = ['semver-major', 'semver-minor', 'semver-patch', 'skip-release']
   const foundTargetLabels = []
   for (const label of pr.labels) {
