@@ -22,13 +22,19 @@ module.exports = async function issueRelease ({ github, context, core }) {
   pkg.update({ version: newVersion })
   await pkg.save()
 
+  core.info(`Updating package.json with new version: ${newVersion}`)
   await doCommand('git add package.json')
   await doCommand(`git commit -m v${newVersion}`)
 
+  core.info(`Publishing new module version: ${newVersion}`)
   const manifest = await pacote.manifest('./')
   const tarData = await pack()
-  await publish(manifest, tarData, { token: process.env.NPM_TOKEN })
+  await publish(manifest, tarData, {
+    token: process.env.NPM_TOKEN,
+    access: pkg?.publishConfig?.access ?? 'restricted'
+  })
 
+  core.info(`Commiting changes and creating new tag: v${newVersion}`)
   await doCommand('git push')
   await doCommand(`git tag v${newVersion}`)
   await doCommand('git push --tags')
