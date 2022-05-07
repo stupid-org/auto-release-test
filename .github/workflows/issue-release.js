@@ -29,9 +29,11 @@ module.exports = async function issueRelease ({ github, context, core }) {
   core.info(`Publishing new module version: ${newVersion}`)
   const manifest = await pacote.manifest('./')
   const tarData = await pack()
-  console.log(process.env.NPM_TOKEN.substr(-4))
+  // https://github.com/npm/cli/issues/4250#issuecomment-976602325
   await publish(manifest, tarData, {
-    token: process.env.NPM_TOKEN,
+    forceAuth: {
+      token: process.env.NPM_TOKEN,
+    },
     access: pkg?.publishConfig?.access ?? 'restricted'
   })
 
