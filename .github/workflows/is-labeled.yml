@@ -17,7 +17,7 @@ jobs:
     name: is-labeled
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script
+      - uses: actions/github-script@main
         with:
           script: |
             const script = require('./.github/workflows/is-labeled.js')
