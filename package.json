@@ -1,0 +1,19 @@
+{
+  "name": "@jsumners/auto-release-test",
+  "description": "A repo for testing automating of releases to npmjs.com",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stupid-org/auto-release-test.git"
+  },
+  "author": "James Sumners",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stupid-org/auto-release-test/issues"
+  },
+  "homepage": "https://github.com/stupid-org/auto-release-test#readme"
+}
