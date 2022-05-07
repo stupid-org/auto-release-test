@@ -28,8 +28,15 @@ module.exports = async function isLabeled({ github, context, core }) {
       break
     }
 
+    case 2: {
+      if (foundTargetLabels.includes('skip-release') === true) {
+        // We allow skip-release in conjunction with a single other semver label.
+        break
+      }
+    }
+
     default: {
-      core.setFailed('Too many required labels found: ' + foundTargetLabels.join())
+      core.setFailed('Too many required labels found: ' + foundTargetLabels.join(', '))
     }
   }
 }
