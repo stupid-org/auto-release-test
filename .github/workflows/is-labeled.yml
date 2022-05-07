@@ -17,11 +17,11 @@ jobs:
     name: is-labeled
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@main
       - uses: actions/github-script@main
         with:
           script: |
-            const path = require('path')
-            const script = require(path.join(__dirname, 'is-labeled.js'))
+            const script = require('./.github/workflows/is-labeled.js')
             try {
               await script({ github, context, core })
             } catch (cause) {
