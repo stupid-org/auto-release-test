@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/stupid-org/auto-release-test/issues"
   },
-  "homepage": "https://github.com/stupid-org/auto-release-test#readme"
+  "homepage": "https://github.com/stupid-org/auto-release-test#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
