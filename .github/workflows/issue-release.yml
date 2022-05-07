@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-        with:
+        # with:
           # Must be set to the repo's master branch so that new commits
           # are added to the right branch.
           # ref: main
