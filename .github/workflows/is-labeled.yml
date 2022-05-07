@@ -1,0 +1,28 @@
+name: PR Is Labeled Check
+
+permissions: read-all
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - updated
+      - synchronize
+      - labeled
+      - unlabeled
+
+jobs:
+  is-labeled:
+    name: is-labeled
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script
+        with:
+          script: |
+            const script = require('./.github/workflows/is-labeled.js')
+            try {
+              await script({ github, context, core })
+            } catch (cause) {
+              core.setFailed(`Action failed with error: ${cause.message}`);
+            }
