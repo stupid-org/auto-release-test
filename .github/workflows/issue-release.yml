@@ -1,7 +1,5 @@
 name: Issue Release
 
-permissions: read-all
-
 on:
   pull_request:
     types:
