@@ -17,7 +17,7 @@ jobs:
         with:
           # Must be set to the repo's master branch so that new commits
           # are added to the right branch.
-          path: main
+          # ref: main
       - uses: actions/setup-node@main
         with:
           node-version: 'lts/*'
