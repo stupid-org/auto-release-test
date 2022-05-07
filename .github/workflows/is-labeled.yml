@@ -1,4 +1,4 @@
-name: PR Is Labeled Check
+name: PR Is Labeled
 
 permissions: read-all
 
@@ -14,7 +14,7 @@ on:
 
 jobs:
   is-labeled:
-    name: is-labeled
+    name: Verify Labeled
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main

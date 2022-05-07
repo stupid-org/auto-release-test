@@ -7,9 +7,11 @@ module.exports = async function isLabeled({ github, context, core }) {
     pull_number: context.issue.number,
   });
 
+  // console.log(JSON.stringify(pr))
+
   const targetLabels = ['semver-major', 'semver-minor', 'semver-patch', 'skip-release']
   const foundTargetLabels = []
-  for (const label of pr.labels) {
+  for (const label of pr.data.labels) {
     if (targetLabels.includes(label.name) === false) {
       continue
     }
@@ -26,8 +28,15 @@ module.exports = async function isLabeled({ github, context, core }) {
       break
     }
 
+    case 2: {
+      if (foundTargetLabels.includes('skip-release') === true) {
+        // We allow skip-release in conjunction with a single other semver label.
+        break
+      }
+    }
+
     default: {
-      core.setFailed('Too many required labels found: ' + foundTargetLabels.join())
+      core.setFailed('Too many required labels found: ' + foundTargetLabels.join(', '))
     }
   }
 }
