@@ -20,7 +20,7 @@ module.exports = async function isLabeled({ github, context, core }) {
 
   switch (foundTargetLabels.length) {
     case 0: {
-      core.error('No required labels found.')
+      core.setFailed('No required labels found.')
       break
     }
 
@@ -29,7 +29,7 @@ module.exports = async function isLabeled({ github, context, core }) {
     }
 
     default: {
-      core.error('Too many required labels found: ' + foundTargetLabels.join())
+      core.setFailed('Too many required labels found: ' + foundTargetLabels.join())
     }
   }
 }

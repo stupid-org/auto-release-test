@@ -25,5 +25,5 @@ jobs:
             try {
               await script({ github, context, core })
             } catch (cause) {
-              core.error(`Action failed with error: ${cause.message}`);
+              core.setFailed(`Action failed with error: ${cause.message}`);
             }
