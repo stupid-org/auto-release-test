@@ -26,7 +26,7 @@ jobs:
       - uses: actions/github-script@main
         with:
           env:
-            NPM_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+            NPM_TOKEN: "${{secrets.NPM_PUBLISH_TOKEN}}"
           script: |
             const script = require('./.github/workflows/issue-release.js')
             try {
