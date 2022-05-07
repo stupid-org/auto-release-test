@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@main
         with:
           node-version: 'lts/*'
+      - run: ls -la
       - run: npm install
       - run: npm install --no-save pacote libnpmpack libnpmpublish @npmcli/package-json semver
       - uses: actions/github-script@main
